@@ -1,0 +1,18 @@
+{
+  "name": "sms-clockwork",
+  "version": "1.0.0",
+  "description": "An SMS Messaging Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@netlify/functions": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4"
+  }
+}
