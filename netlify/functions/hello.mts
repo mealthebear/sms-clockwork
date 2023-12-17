@@ -11,7 +11,7 @@ export default async (req: Request, context: Context) => {
   //     context: context,
   //   }),
   // };
-  return new Response("Hello, world!", optionsObject);
+  return new Response(JSON.stringify(optionsObject));
 };
 
 export const config: Config = {
