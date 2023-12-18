@@ -42,10 +42,10 @@ When beginning work on a new feature, start from the root branch by checking out
 git checkout main
 ```
 
-Make sure to fetch all new changes so that your local `main` branch is up to date.
+Make sure to fetch and pull all new changes so that your local `main` branch is up to date.
 
 ```
-git fetch
+git pull origin main
 ```
 
 Then, create a new branch and set it as the current branch. Be sure to give the new branch a name that's relevant to the feature you're developing.
