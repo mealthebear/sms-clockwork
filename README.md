@@ -2,7 +2,7 @@
 
 ## Required Programs
 
-This project requires Node.js version 14.15.0 or newer. To download the latest version of Node.js, please visit the following link below:
+This project requires Node.js version 14.15.0 or newer. To download the latest version of Node.js, please visit one of the following links below:
 
 For MacOS, Linux, or Windows: [Install Node.js using nvm](https://github.com/nvm-sh/nvm)
 
@@ -32,7 +32,23 @@ This project is using the Netlify platform to build Serverless functions. The Ne
 npm install -g netlify-cli
 ```
 
+Install any missing node modules for the project's libraries with the following command:
+
+```
+npm install
+```
+
 To test if the Netlify CLI is successfully installed, run the `netlify` command in your terminal. A list of commands should be displayed.
+
+## Testing Locally
+
+To run a local version of the application, Netlify offers the `dev` command to create a local server.
+
+```
+netlify dev
+```
+
+The default port is `8888`, so your local application will likely be accessible at `http://localhost:8888`
 
 ## Development
 
