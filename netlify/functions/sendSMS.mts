@@ -1,4 +1,6 @@
 import type { Config, Context } from "@netlify/functions";
+import pkg from "twilio";
+const { Twilio } = pkg;
 
 export default async (req: Request, context: Context): Promise<Response> => {
   const AUTH_TOKEN = Netlify.env.get("AUTH_TOKEN");
@@ -16,7 +18,7 @@ export default async (req: Request, context: Context): Promise<Response> => {
     const SENDER_PHONE_NUMBER = Netlify.env.get("SENDER_PHONE_NUMBER");
     const { phone_number: recipientPhoneNumber } = context.params;
 
-    const client = require("twilio")(TWILIO_SID, TWILIO_TOKEN);
+    const client = new Twilio(TWILIO_SID, TWILIO_TOKEN);
 
     try {
       const message = await client.messages.create({
