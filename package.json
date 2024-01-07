@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@netlify/functions": "^2.4.1",
-    "@supabase/supabase-js": "^2.39.1"
+    "@supabase/supabase-js": "^2.39.1",
+    "twilio": "^4.20.0"
   },
   "devDependencies": {
     "@types/node": "^20.10.4"
