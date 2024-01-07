@@ -3,6 +3,7 @@ import type { Config, Context } from "@netlify/functions";
 export default async (req: Request, context: Context): Promise<Response> => {
   const AUTH_TOKEN = Netlify.env.get("AUTH_TOKEN");
   const { creds } = context.params;
+
   if (creds !== AUTH_TOKEN) {
     const errorBody = JSON.stringify({
       status: 500,
