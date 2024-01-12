@@ -1,11 +1,11 @@
-import { Twilio } from "twilio";
+const { Twilio } = require("twilio");
 
 type PhoneNumber = `+1${string}`;
 type BodyText = string;
 type RecipientData = { phoneNumber: PhoneNumber; bodyText: BodyText };
 type TenantList = RecipientData[];
 
-const samplePhoneNumberList = [
+const samplePhoneNumberList: TenantList = [
   { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
   { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
   { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
@@ -16,8 +16,8 @@ const createSMSPromise = (
   bodyText: string
 ): Promise<unknown> => {
   const SMSPromise = new Promise(async (resolve, reject) => {
-    const TWILIO_SID = process.env.TWILIO_SID;
-    const TWILIO_TOKEN = process.env.TWILIO_TOKEN;
+    const TWILIO_SID = '1';
+    const TWILIO_TOKEN = '2';
     const SENDER_PHONE_NUMBER = process.env.SENDER_PHONE_NUMBER;
 
     const client = new Twilio(TWILIO_SID, TWILIO_TOKEN);
@@ -46,5 +46,8 @@ const createSMSPromiseList = (tenantList: TenantList): Promise<unknown>[] => {
   }
   return SMSPromiseList;
 };
+
+const promiseList = createSMSPromiseList(samplePhoneNumberList);
+console.log(promiseList);
 
 export default { createSMSPromiseList };
