@@ -1,4 +1,4 @@
-const { Twilio } = require("twilio");
+import { Twilio } from "twilio";
 
 type PhoneNumber = `+1${string}`;
 type BodyText = string;
