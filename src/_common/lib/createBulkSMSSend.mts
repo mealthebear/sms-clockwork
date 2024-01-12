@@ -17,8 +17,8 @@ const createSMSPromise = (
   bodyText: string
 ): Promise<unknown> => {
   const SMSPromise = new Promise(async (resolve, reject) => {
-    const TWILIO_SID = '1';
-    const TWILIO_TOKEN = '2';
+    const TWILIO_SID = process.env.TWILIO_SID;
+    const TWILIO_TOKEN = process.env.TWILIO_TOKEN;
     const SENDER_PHONE_NUMBER = process.env.SENDER_PHONE_NUMBER;
 
     const client = new Twilio(TWILIO_SID, TWILIO_TOKEN);
