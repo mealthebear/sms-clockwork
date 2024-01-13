@@ -48,6 +48,4 @@ const createSMSPromiseList = (tenantList: TenantList): Promise<unknown>[] => {
   return SMSPromiseList;
 };
 
-const promiseList = createSMSPromiseList(samplePhoneNumberList);
-
 export default { createSMSPromiseList };
