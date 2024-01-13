@@ -49,6 +49,5 @@ const createSMSPromiseList = (tenantList: TenantList): Promise<unknown>[] => {
 };
 
 const promiseList = createSMSPromiseList(samplePhoneNumberList);
-console.log(promiseList);
 
 export default { createSMSPromiseList };
