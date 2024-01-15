@@ -4,8 +4,9 @@
   "description": "An SMS Messaging Service",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc && echo \"Build finished!\""
+    "start": "netlify dev",
+    "build": "npx tsc && echo \"Build finished!\"",
+    "test": "npx playwright test"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "twilio": "^4.20.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.4",
     "typescript": "^5.3.3"
   }
