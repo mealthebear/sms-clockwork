@@ -6,12 +6,6 @@ type BodyText = string;
 type RecipientData = { phoneNumber: PhoneNumber; bodyText: BodyText };
 type TenantList = RecipientData[];
 
-const samplePhoneNumberList: TenantList = [
-  { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
-  { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
-  { phoneNumber: "+11234567890", bodyText: "Hello, World!" },
-];
-
 const createSMSPromise = (
   recipientPhoneNumber: PhoneNumber,
   bodyText: string
@@ -36,7 +30,9 @@ const createSMSPromise = (
   return SMSPromise;
 };
 
-const createSMSPromiseList = (tenantList: TenantList): Promise<unknown>[] => {
+export const createSMSPromiseList = (
+  tenantList: TenantList
+): Promise<unknown>[] => {
   const SMSPromiseList: Promise<unknown>[] = [];
   for (let index = 0; index < tenantList.length; index++) {
     const recipientPhoneNumber = tenantList[index].phoneNumber;
