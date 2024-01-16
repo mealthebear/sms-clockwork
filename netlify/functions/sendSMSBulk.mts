@@ -1,6 +1,6 @@
 import type { Context, Config } from "@netlify/functions";
-import pkg from "twilio";
-const { Twilio } = pkg;
+import { getAllTenants } from "../../database/tables/tenants/getAllTenants.mjs";
+import { createSMSPromiseList } from "../../build/_common/lib/createBulkSMSSend.mjs";
 
 export default async (req: Request, context: Context): Promise<Response> => {
   const AUTH_TOKEN = Netlify.env.get("AUTH_TOKEN");
@@ -15,8 +15,15 @@ export default async (req: Request, context: Context): Promise<Response> => {
   }
 
   try {
-    return new Response("Placeholder value");
+    const tenantList = await getAllTenants();
+    createSMSPromiseList(tenantList);
+
+    return new Response("Bulk SMS Sent Successfully!");
   } catch (err) {
     return new Response(JSON.stringify(err));
   }
+};
+
+export const config: Config = {
+  path: ["/send-bulk/:creds"],
 };
