@@ -8,4 +8,4 @@ test.describe("Hello World", () => {
     expect(jsonResponse.status).toBe(200);
     expect(jsonResponse.statusText).toBe(`Hello! My fruit is ${FRUIT_NAME}`);
   });
-})
+});
