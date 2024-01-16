@@ -131,3 +131,10 @@ dist
 
 # Local Netlify folder
 .netlify
+
+# TypeScript Build Files
+build
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

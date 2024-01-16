@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import timeFormats from "../../../_common/lib/timeFormats.mjs";
+import timeFormats from "../../../build/_common/lib/timeFormats.mjs";
 
 const { getTimestampToday } = timeFormats;
 const DATABASE_URL = process.env.DATABASE_URL;

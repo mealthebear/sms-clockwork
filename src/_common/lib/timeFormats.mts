@@ -1,4 +1,4 @@
-const getTimestampToday = () => {
+export const getTimestampToday = (): string => {
   const currentDate = new Date();
   const formattedTimestamp = new Intl.DateTimeFormat("en-US", {
     year: "numeric",
