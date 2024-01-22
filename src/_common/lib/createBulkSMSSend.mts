@@ -1,3 +1,4 @@
+import { createMessageRecord } from '../../../database/tables/messages/createMessageRecord.mjs';
 import pkg from "twilio";
 const { Twilio } = pkg;
 
@@ -16,14 +17,21 @@ const createSMSPromise = (
     const SENDER_PHONE_NUMBER = process.env.SENDER_PHONE_NUMBER;
 
     const client = new Twilio(TWILIO_SID, TWILIO_TOKEN);
+
+    const messageDetails = {
+      phoneNumber: recipientPhoneNumber,
+      bodyText: bodyText,
+    };
     try {
       const message = await client.messages.create({
         from: `${SENDER_PHONE_NUMBER}`,
         to: `${recipientPhoneNumber}`,
         body: `${bodyText}`,
       });
+      createMessageRecord(messageDetails, true);
       resolve(message);
     } catch (err) {
+      createMessageRecord(messageDetails, false);
       reject(err);
     }
   });
