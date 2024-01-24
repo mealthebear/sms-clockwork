@@ -7,11 +7,10 @@ type BodyText = string;
 type RecipientData = { phoneNumber: PhoneNumber; bodyText: BodyText };
 type TenantList = RecipientData[];
 
-const createSMSPromise = (
+const createSMSPromise = async (
   recipientPhoneNumber: PhoneNumber,
   bodyText: string
-): Promise<unknown> => {
-  const SMSPromise = new Promise(async (resolve, reject) => {
+): Promise<void> => {
     const TWILIO_SID = process.env.TWILIO_SID;
     const TWILIO_TOKEN = process.env.TWILIO_TOKEN;
     const SENDER_PHONE_NUMBER = process.env.SENDER_PHONE_NUMBER;
@@ -23,33 +22,26 @@ const createSMSPromise = (
       bodyText: bodyText,
     };
     try {
-      const message = await client.messages.create({
+      await client.messages.create({
         from: `${SENDER_PHONE_NUMBER}`,
         to: `${recipientPhoneNumber}`,
         body: `${bodyText}`,
       });
       createMessageRecord(messageDetails, true);
-      resolve(message);
     } catch (err) {
       createMessageRecord(messageDetails, false);
-      reject(err);
     }
-  });
-  return SMSPromise;
 };
 
 export const createSMSPromiseList = (
   tenantList: TenantList
-): Promise<unknown>[] => {
-  const SMSPromiseList: Promise<unknown>[] = [];
+): void => {
   for (let index = 0; index < tenantList.length; index++) {
     const recipientPhoneNumber = tenantList[index].phoneNumber;
     const bodyText = tenantList[index].bodyText;
 
-    const SMSPromise = createSMSPromise(recipientPhoneNumber, bodyText);
-    SMSPromiseList.push(SMSPromise);
+    createSMSPromise(recipientPhoneNumber, bodyText);
   }
-  return SMSPromiseList;
 };
 
 export default { createSMSPromiseList };
